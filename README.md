@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/codefordenver/sol-cavp.png?label=ready&title=Ready)](https://waffle.io/codefordenver/sol-cavp)
 # SOL fka CAVP
 Survivors Organizing for Liberation
 
