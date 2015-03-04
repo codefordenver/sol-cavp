@@ -1,0 +1,2 @@
+{:require  [sol-cavp.app]
+ :init-fns [sol-cavp.app/init]}
