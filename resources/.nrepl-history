@@ -1,0 +1,5 @@
+(cycle 3)
+(+ 2 2)
+(doc take)
+(vec 2 3 4[
+(vec 2 3 4)
