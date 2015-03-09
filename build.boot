@@ -6,6 +6,7 @@
                  [adzerk/boot-reload    "0.2.4"      :scope "test"]
                  [pandeiro/boot-http    "0.6.1"      :scope "test"]
                  [reagent "0.5.0-alpha3"]
+                 [reagent-forms "0.4.3"]
                  [boot-garden "1.2.5-1"]])
 
 (require

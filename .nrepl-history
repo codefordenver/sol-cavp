@@ -1,0 +1,4 @@
+(keyword "test")
+(let [x inc] (prn x))
+(fn [x] (inc))
+(fn [x] inc)
