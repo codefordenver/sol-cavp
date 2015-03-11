@@ -11,3 +11,8 @@
   (for [[k v] my-map] 
 (into {} 
   (for [[k v] my-map] 
+(def single-event-channels #{:mouse-move :mouse-down :mouse-up
+                             :text-change :selection-change
+                             :file-drag-over :file-drag-leave :file-drag-end
+                             :file-loaded})
+(defonce comms (into {} (map #(vector % (single-event-channel)) single-event-channels)))
