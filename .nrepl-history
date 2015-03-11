@@ -2,3 +2,12 @@
 (let [x inc] (prn x))
 (fn [x] (inc))
 (fn [x] inc)
+(keyword 3)
+(get {:a 1 :b 2} :b)
+(keyword (get {:a 1 :b 2} :b))
+(doc keyword)
+(doc key)
+(into {} 
+  (for [[k v] my-map] 
+(into {} 
+  (for [[k v] my-map] 
