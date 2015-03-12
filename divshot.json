@@ -1,5 +1,5 @@
 {
-  "name": "sol-cavp",
+  "name": "test-sol-cavp",
   "root": "target",
   "clean_urls": true,
   "error_page": "error.html"

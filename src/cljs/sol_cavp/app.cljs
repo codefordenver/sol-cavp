@@ -8,6 +8,10 @@
 
 (def master-form (atom {}))
 
+(def lock (new js/Auth0Lock "6I7t0JdYGGTFoxeB8gmW0LWn7LciMm7G" "sol-cavp.auth0.com")) ;; auth0 lock 
+
+(def user-profile (atom {})) ;; profile
+
 (defn init-table-top []
   (let [enabled?  (fn [x] (when (= (:enabled x) "TRUE") x))
         with-data (fn [data] (filter enabled? (:elements (:2015 (js->clj data :keywordize-keys true)))))
@@ -40,21 +44,41 @@
       [input-component type])))
 
 (defn text-area []
-  [:div {:class "col-md-6 col-lg-6"} [:textarea.form-control {:rows 24}]])
+  [:div {:class "col-md-6 col-lg-6"} 
+   [:p.text-center "notes"]
+   [:textarea.form-control {:rows 24}]])
+
+(defn login []
+  (.show lock (clj->js {:popup true}) 
+         (fn [err profile token]
+           (if (not (nil? err))
+             (print err)
+             (do 
+               (.setItem js/localStorage (clj->js {:userToken token})) ;; save the JWT token.
+               (swap! user-profile profile)
+               (print profile)
+               (print token))))))
+
+(defn login-btn []
+  [:label {:for "btn-login"} "Are you a volunteer? "
+   [:button {:class "btn btn-default" :id "btn-login" :type "submit" :on-click login} "login"]])
 
 (defn part-1 []
   (let []
     (fn []
       (println (count @master-form))     
       [:div 
-         [:div.header
-          [:h5.text-right "part " [:span.badge "1"]]]
+         [:div.header]
+       [:h5.text-right
+        [login-btn]
+        [:br]
+        "part " [:span.badge "1"]]          
       [:br]
       [:div.row
        [:div {:class "col-md-6 col-lg-6"} 
         (for [c @master-form]
           ^{:key c} [row (:field-name c) [:div {:key (str "part-1-" (:rowNumber c))}                                       
-                                        [return-component (:type c)]]])]
+                                          [return-component (:type c)]]])]
         [text-area]]]))) 
                                                                  
 (defn init []
