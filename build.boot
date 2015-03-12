@@ -7,6 +7,7 @@
                  [pandeiro/boot-http    "0.6.1"      :scope "test"]
                  [reagent "0.5.0-alpha3"]
                  [reagent-forms "0.4.4"]
+                 [secretary "2.0.0.1-2b0752"] ;; client-side routing lib
                  [boot-garden "1.2.5-1"]])
 
 (require

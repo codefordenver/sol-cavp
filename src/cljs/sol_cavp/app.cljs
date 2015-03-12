@@ -17,8 +17,8 @@
 
 (defn row [label & body]
   [:div.row
-   [:div {:class "col-md-2 col-lg-2"} [:label label]]
-   [:div {:class "col-md-4 col-lg-4"} body]])
+   [:div {:class "col-md-4 col-lg-4"} [:label label]]
+   [:div {:class "col-md-8 col-lg-8"} body]])
 
 (defn date-picker [setdate]
   (let [today (.format (js/moment (new js/Date)) "MM/DD/YYYY")]
@@ -39,17 +39,23 @@
       "datepicker" [date-picker-component]
       [input-component type])))
 
+(defn text-area []
+  [:div {:class "col-md-6 col-lg-6"} [:textarea.form-control {:rows 24}]])
+
 (defn part-1 []
   (let []
     (fn []
       (println (count @master-form))     
       [:div 
          [:div.header
-       [:h2.text-right "part 1"]]
+          [:h5.text-right "part " [:span.badge "1"]]]
       [:br]
-      (for [c @master-form]
-        ^{:key c} [row (:field-name c) [:div {:key (str "part-1-" (:rowNumber c))}                                       
-                                        [return-component (:type c)]]])]))) 
+      [:div.row
+       [:div {:class "col-md-6 col-lg-6"} 
+        (for [c @master-form]
+          ^{:key c} [row (:field-name c) [:div {:key (str "part-1-" (:rowNumber c))}                                       
+                                        [return-component (:type c)]]])]
+        [text-area]]]))) 
                                                                  
 (defn init []
   (init-table-top)
