@@ -12,3 +12,6 @@ pom.xml.asc
 /.repl
 .DS_Store
 
+.nrepl-history
+.divshot-cache
+
